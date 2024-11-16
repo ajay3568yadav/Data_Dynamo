@@ -1,0 +1,319 @@
+/* General Layout */
+.app-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 256px;
+  min-height: 100vh;
+  background-color: #1a1625;
+  color: #e5e7eb;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 10;
+}
+
+.logo-section {
+  padding: 16px;
+  border-bottom: 1px solid #374151;
+}
+
+.logo-section h1 {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+}
+
+.org-section {
+  padding: 16px;
+  border-bottom: 1px solid #374151;
+}
+
+.org-badge {
+  width: 32px;
+  height: 32px;
+  background-color: #7c3aed;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 14px;
+}
+
+.create-btn-section {
+  padding: 16px;
+}
+
+.create-river-btn {
+  width: 100%;
+  background-color: #7c3aed;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.create-river-btn:hover {
+  background-color: #6d28d9;
+}
+
+.nav-menu {
+  padding: 16px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  margin: 4px 0;
+  border-radius: 6px;
+  cursor: pointer;
+  gap: 12px;
+}
+
+.nav-item:hover {
+  background-color: rgba(124, 58, 237, 0.1);
+}
+
+.nav-item.active {
+  background-color: #5b21b6;
+  color: white;
+}
+
+/* Main Content */
+.main-content {
+  margin-left: 256px; /* Same as sidebar width */
+  padding: 32px;
+  min-height: 100vh;
+}
+
+.welcome-section {
+  margin-bottom: 32px;
+}
+
+.welcome-section h1 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #1a1625;
+  margin-bottom: 8px;
+}
+
+.welcome-section p {
+  color: #6b7280;
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1a1625;
+  margin-bottom: 16px;
+}
+
+/* Pipeline Cards */
+.pipeline-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.pipeline-card {
+  padding: 24px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+}
+
+.pipeline-card:hover {
+  border-color: #7c3aed;
+}
+
+.pipeline-icons {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Create Pipeline Section */
+.create-pipeline-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.create-pipeline-card {
+  padding: 24px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.create-pipeline-card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 16px 0;
+}
+
+.create-pipeline-card p {
+  color: #6b7280;
+  margin-bottom: 16px;
+}
+
+.create-pipeline-btn {
+  color: #7c3aed;
+  border: 1px solid #7c3aed;
+  padding: 8px 16px;
+  border-radius: 6px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.create-pipeline-btn:hover {
+  background-color: #f5f3ff;
+}
+
+/* Utility Classes */
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.space-x-2 > * + * {
+  margin-left: 8px;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .pipeline-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 64px;
+  }
+
+  .logo-section h1,
+  .org-section span,
+  .create-river-btn span,
+  .nav-item span {
+    display: none;
+  }
+
+  .pipeline-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .create-pipeline-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Sliding Create Menu */
+.create-menu {
+  position: fixed;
+  top: 0;
+  left: 256px; /* Aligns with the end of main sidebar */
+  width: 400px;
+  height: 100vh;
+  background-color: white;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 5;
+  overflow-y: auto;
+}
+
+.create-menu.open {
+  transform: translateX(0);
+}
+
+.create-menu-header {
+  padding: 24px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.create-menu-header h2 {
+  font-size: 24px;
+  color: #1a1625;
+  margin-bottom: 8px;
+}
+
+.create-menu-header p {
+  color: #6b7280;
+}
+
+.create-menu-content {
+  padding: 24px;
+}
+
+.river-option {
+  padding: 24px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  transition: border-color 0.2s;
+}
+
+.river-option:hover {
+  border-color: #7c3aed;
+}
+
+.river-option-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #7c3aed;
+}
+
+.river-option-content h3 {
+  font-size: 18px;
+  color: #1a1625;
+  margin-bottom: 8px;
+}
+
+.river-option-content p {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.river-option.kits {
+  background-color: #f9fafb;
+}
+
+
+
+
+
+
+
